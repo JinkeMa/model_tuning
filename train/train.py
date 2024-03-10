@@ -1,33 +1,35 @@
-# 导入pytorch相关模块
+# 导入torch常用模块
 import torch
-import torchvision.models as models
-import torchvision.datasets as datasets
-import torchvision.transforms as transforms
-import torch.optim as optim
 import torch.nn as nn
+import torch.utils.data as Data
+import torch.optim as Optimum
 
-#从model zoo下载预训练的图像分割模型
-resnet101 = models.segmentation.deeplabv3_resnet101(pretrained=True)
-# 设置模型为评估模式
-resnet101.eval()
+import torchvision.datasets as Datasets
+import torchvision.transforms as Transforms
 
-# 加载图像和对应的标签
-image = Image.open('image.jpg')
-label = Image.open('label.png')
-# 对图像和标签进行预处理
-preprocess = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-])
+from torchvision.transforms import ToTensor, Lambda, Compose
 
-# 加载/data目录下的训练集进行训练
-train_dataset = datasets.VOCSegmentation(root='./data', year='2012', image_set='train', download=True, transform=preprocess)
-train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=4, shuffle=True)
-# 定义损失函数和优化器
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(
-    resnet101.parameters(), lr=0.001, weight_decay=1e-4)
-# 训练模型
-for epoch in range(num_epochs):
-    for images, labels in train_loader:
-        
+
+
+import os
+# 全局变量
+data_path = {
+    'train' : '../data/viod/train/',
+    'test'  : '../data/viod/test/'
+}
+# 读取目录下的.json文件与对应的.jpg图像
+def read_json_image(data_path):
+    # 判断目录是否存在
+    if not os.path.exists(data_path):
+        raise FileNotFoundError('文件夹不存在')
+    # 读取目录下的jpg与json文件
+    img_files = os.listdir(data_path)
+    
+
+
+# 加载unet网络的标注数据
+train_data = Datasets.ImageFolder(root='../data/viod/train/', transform=ToTensor())
+test_data = Datasets.ImageFolder(root='../data/viod/test/', transform=ToTensor())
+# 加载训练集和测试集
+train_loader = Data.DataLoader(dataset=train_data, batch_size=16, shuffle=True)
+test_loader = Data.DataLoader(dataset=test_data, batch_size=16, shuffle=False)
