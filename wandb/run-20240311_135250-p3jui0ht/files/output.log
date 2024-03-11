@@ -1,0 +1,51 @@
+INFO: Starting training:
+        Epochs:          5
+        Batch size:      1
+        Learning rate:   1e-05
+        Training size:   108
+        Validation size: 12
+        Checkpoints:     True
+        Device:          cuda
+        Images scaling:  1
+        Mixed Precision: False
+Epoch 1/5:   0%|                                                                                                                       | 0/108 [00:52<?, ?img/s]
+Traceback (most recent call last):
+  File "f:\model_tuning\train\train.py", line 283, in <module>
+    train_model(
+  File "f:\model_tuning\train\train.py", line 163, in train_model
+    for batch in train_loader:
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\utils\data\dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\utils\data\dataloader.py", line 1346, in _next_data
+    return self._process_data(data)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\utils\data\dataloader.py", line 1372, in _process_data
+    data.reraise()
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\_utils.py", line 722, in reraise
+    raise exception
+ValueError: Caught ValueError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\utils\data\_utils\worker.py", line 308, in _worker_loop
+    data = fetcher.fetch(index)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\utils\data\_utils\fetch.py", line 49, in fetch
+    data = self.dataset.__getitems__(possibly_batched_index)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\utils\data\dataset.py", line 399, in __getitems__
+    return [self.dataset[self.indices[idx]] for idx in indices]
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\utils\data\dataset.py", line 399, in <listcomp>
+    return [self.dataset[self.indices[idx]] for idx in indices]
+  File "f:\model_tuning\train\train.py", line 71, in __getitem__
+    img_mask = self.transform(img_mask)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torchvision\transforms\transforms.py", line 95, in __call__
+    img = t(img)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torchvision\transforms\transforms.py", line 354, in forward
+    return F.resize(img, self.size, self.interpolation, self.max_size, self.antialias)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torchvision\transforms\functional.py", line 469, in resize
+    return F_t.resize(img, size=output_size, interpolation=interpolation.value, antialias=antialias)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torchvision\transforms\_functional_tensor.py", line 465, in resize
+    img = interpolate(img, size=size, mode=interpolation, align_corners=align_corners, antialias=antialias)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\nn\functional.py", line 3934, in interpolate
+    raise ValueError(
+ValueError: Input and output must have the same number of spatial dimensions, but got input with spatial dimensions of [1954] and output size of [256, 256]. Please provide input tensor in (N, C, d1, d2, ...,dK) format and output size in (o1, o2, ...,oK) format.

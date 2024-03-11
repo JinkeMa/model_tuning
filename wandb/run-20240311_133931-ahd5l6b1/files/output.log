@@ -1,0 +1,25 @@
+INFO: Starting training:
+        Epochs:          5
+        Batch size:      1
+        Learning rate:   1e-05
+        Training size:   108
+        Validation size: 12
+        Checkpoints:     True
+        Device:          cuda
+        Images scaling:  1
+        Mixed Precision: False
+Epoch 1/5:   0%|                                                                                                                       | 0/108 [00:55<?, ?img/s]
+Traceback (most recent call last):
+  File "f:\model_tuning\train\train.py", line 282, in <module>
+    train_model(
+  File "f:\model_tuning\train\train.py", line 179, in train_model
+    loss = criterion(masks_pred, true_masks)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\nn\modules\loss.py", line 1179, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\nn\functional.py", line 3059, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+RuntimeError: only batches of spatial targets supported (3D tensors) but got targets of size: : [1, 1, 256, 256]
