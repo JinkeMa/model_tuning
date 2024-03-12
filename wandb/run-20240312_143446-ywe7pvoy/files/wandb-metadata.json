@@ -1,0 +1,53 @@
+{
+    "os": "Windows-10-10.0.22621-SP0",
+    "python": "3.9.18",
+    "heartbeatAt": "2024-03-12T06:34:51.915506",
+    "startedAt": "2024-03-12T06:34:46.730510",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "f:\\model_tuning\\train\\train.py",
+    "codePathLocal": "train\\train.py",
+    "codePath": "train\\train.py",
+    "git": {
+        "remote": "https://github.com/JinkeMa/model_tuning.git",
+        "commit": "dc1ca4f2d4da3d18055e644ae0c1b8ea44084747"
+    },
+    "email": "1243941867@qq.com",
+    "root": "F:/model_tuning",
+    "host": "LAPTOP-RKKSQM6N",
+    "username": "user",
+    "executable": "D:\\ProgramData\\miniconda3\\envs\\pytorch_env\\python.exe",
+    "cpu_count": 16,
+    "cpu_count_logical": 24,
+    "cpu_freq": {
+        "current": 1466.0,
+        "min": 0.0,
+        "max": 2200.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1466.0,
+            "min": 0.0,
+            "max": 2200.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 58.593746185302734,
+            "used": 6.007556915283203
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "memory_total": 8585740288
+        }
+    ],
+    "memory": {
+        "total": 31.71471405029297
+    }
+}

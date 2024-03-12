@@ -1,0 +1,21 @@
+INFO: Starting training:
+        Epochs:          5
+        Batch size:      1
+        Learning rate:   1e-05
+        Training size:   108
+        Validation size: 12
+        Checkpoints:     False
+        Device:          cuda
+        Images scaling:  1
+        Mixed Precision: False
+Epoch 1/5:  19%|██████████████████▍                                                                            | 21/108 [00:03<00:13,  6.44img/s, loss (batch)=-5.75]
+Traceback (most recent call last):
+  File "f:\model_tuning\train\train.py", line 286, in <module>
+    train_model(
+  File "f:\model_tuning\train\train.py", line 219, in train_model
+    val_score = evaluate(model, val_loader, device, amp)
+  File "D:\ProgramData\miniconda3\envs\pytorch_env\lib\site-packages\torch\utils\_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "f:\model_tuning\train\evaluate.py", line 27, in evaluate
+    assert mask_true.min() >= 0 and mask_true.max() <= 1, 'True mask indices should be in [0, 1]'
+AssertionError: True mask indices should be in [0, 1]

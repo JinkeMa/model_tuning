@@ -1,0 +1,29 @@
+2024-03-12 15:16:44,809 INFO    MainThread:23512 [wandb_setup.py:_flush():76] Current SDK version is 0.16.4
+2024-03-12 15:16:44,809 INFO    MainThread:23512 [wandb_setup.py:_flush():76] Configure stats pid to 23512
+2024-03-12 15:16:44,809 INFO    MainThread:23512 [wandb_setup.py:_flush():76] Loading settings from C:\Users\user\.config\wandb\settings
+2024-03-12 15:16:44,810 INFO    MainThread:23512 [wandb_setup.py:_flush():76] Loading settings from F:\model_tuning\wandb\settings
+2024-03-12 15:16:44,810 INFO    MainThread:23512 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-03-12 15:16:44,810 INFO    MainThread:23512 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-03-12 15:16:44,814 INFO    MainThread:23512 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'train\\train.py', 'program_abspath': 'f:\\model_tuning\\train\\train.py', 'program': 'f:\\model_tuning\\train\\train.py'}
+2024-03-12 15:16:44,814 INFO    MainThread:23512 [wandb_setup.py:_flush():76] Applying login settings: {'anonymous': 'must'}
+2024-03-12 15:16:44,814 INFO    MainThread:23512 [wandb_init.py:_log_setup():526] Logging user logs to F:\model_tuning\wandb\run-20240312_151644-sxs68zbj\logs\debug.log
+2024-03-12 15:16:44,815 INFO    MainThread:23512 [wandb_init.py:_log_setup():527] Logging internal logs to F:\model_tuning\wandb\run-20240312_151644-sxs68zbj\logs\debug-internal.log
+2024-03-12 15:16:44,815 INFO    MainThread:23512 [wandb_init.py:init():566] calling init triggers
+2024-03-12 15:16:44,815 INFO    MainThread:23512 [wandb_init.py:init():573] wandb.init called with sweep_config: {}
+config: {}
+2024-03-12 15:16:44,815 INFO    MainThread:23512 [wandb_init.py:init():616] starting backend
+2024-03-12 15:16:44,815 INFO    MainThread:23512 [wandb_init.py:init():620] setting up manager
+2024-03-12 15:16:44,818 INFO    MainThread:23512 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn, using: spawn
+2024-03-12 15:16:44,820 INFO    MainThread:23512 [wandb_init.py:init():628] backend started and connected
+2024-03-12 15:16:44,823 INFO    MainThread:23512 [wandb_init.py:init():720] updated telemetry
+2024-03-12 15:16:44,863 INFO    MainThread:23512 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-03-12 15:16:46,342 INFO    MainThread:23512 [wandb_run.py:_on_init():2262] communicating current version
+2024-03-12 15:16:48,109 INFO    MainThread:23512 [wandb_run.py:_on_init():2271] got version response 
+2024-03-12 15:16:48,109 INFO    MainThread:23512 [wandb_init.py:init():804] starting run threads in backend
+2024-03-12 15:16:49,820 INFO    MainThread:23512 [wandb_run.py:_console_start():2241] atexit reg
+2024-03-12 15:16:49,820 INFO    MainThread:23512 [wandb_run.py:_redirect():2096] redirect: wrap_raw
+2024-03-12 15:16:49,820 INFO    MainThread:23512 [wandb_run.py:_redirect():2161] Wrapping output streams.
+2024-03-12 15:16:49,820 INFO    MainThread:23512 [wandb_run.py:_redirect():2186] Redirects installed.
+2024-03-12 15:16:49,820 INFO    MainThread:23512 [wandb_init.py:init():847] run started, returning control to user process
+2024-03-12 15:16:49,821 INFO    MainThread:23512 [wandb_run.py:_config_callback():1343] config_cb None None {'epochs': 5, 'batch_size': 1, 'learning_rate': 1e-05, 'val_percent': 0.1, 'save_checkpoint': False, 'img_scale': 1, 'amp': False}
+2024-03-12 15:17:03,671 WARNING MsgRouterThr:23512 [router.py:message_loop():77] message_loop has been closed

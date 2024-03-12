@@ -64,12 +64,16 @@ class SegDataSet(Dataset):
 
     def __getitem__(self, idx):
         img_raw = tio.read_image(self.img_raw[idx], mode = ImageReadMode.GRAY)
-        img_mask = tio.read_image(self.img_mask[idx], mode = ImageReadMode.GRAY)
         if self.transform:
-            #print('transform')
+            if(((img_raw)>1).any()):
+                img_raw = img_raw/255
             img_raw = self.transform(img_raw)
+            
+        img_mask = tio.read_image(self.img_mask[idx], mode = ImageReadMode.GRAY)
         if self.target_transform:
-            #print('target_transform')
+            # mask里的值应该在[0,num_classes]内,这里是单类[0,1]
+            if (img_mask != 0).any():
+                img_mask[img_mask != 0] = 1
             img_mask = self.target_transform(img_mask).squeeze(0)
         return {
             'image' : img_raw, 
@@ -123,8 +127,8 @@ def train_model(
     n_train = len(dataset) - n_val
     train_set, val_set = random_split(dataset, [n_train, n_val], generator=torch.Generator().manual_seed(0))
 
-    # 3. Create data loaders
-    loader_args = dict(batch_size=batch_size, num_workers=os.cpu_count(), pin_memory=True)
+    # 3. Create data loaders # set num_workers to 0, else got error
+    loader_args = dict(batch_size=batch_size, num_workers=0, pin_memory=True)
     train_loader = DataLoader(train_set, shuffle=True, **loader_args)
     val_loader = DataLoader(val_set, shuffle=False, drop_last=True, **loader_args)
 
@@ -175,6 +179,9 @@ def train_model(
                     masks_pred = model(images)
                     if model.n_classes == 1:
                         loss = criterion(masks_pred.squeeze(1), true_masks.float())
+                        # print(masks_pred.squeeze(1).shape, true_masks.shape)
+                        assert masks_pred.squeeze(1).shape == true_masks.shape, \
+                            'Mask prediction and true mask have different dimensions'
                         loss += dice_loss(F.sigmoid(masks_pred.squeeze(1)), true_masks.float(), multiclass=False)
                     else:
                         loss = criterion(masks_pred, true_masks)
@@ -258,6 +265,7 @@ if __name__ == '__main__':
     args = get_args()
 
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+    print('running on cuda' if torch.cuda.is_available() else 'ruunning on cpu')
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     logging.info(f'Using device {device}')
 
